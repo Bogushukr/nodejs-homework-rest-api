@@ -1,15 +1,14 @@
 const express = require('express')
-// const {productSchema} = require("../../validation");
+
+const { contactSchema } = require("../../validation");
+const contactsOperations = require("../../model");
+
 const router = express.Router()
 
-const contactsOperations = require("../../model");
 
 router.get("/", async (req, res, next)=> {
     try {
         const contacts = await contactsOperations.listContacts();
-        res.json({
-            contacts
-        });
         res.json({
             status: "success",
             code: 200,
@@ -42,13 +41,19 @@ router.get('/:contactId', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const contact = await contactsOperations.addContact(req.body);
+    const { error } = contactSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({
+        "message": "missing required name field"
+      })
+    }
+    const newContact = await contactsOperations.addContact(req.body);
     return res.status(201).json({
       status: "Success",
       code: 201,
       message: "New contact has been added",
       data: {
-        contact,
+        newContact,
       },
     });
   } catch (error) {
@@ -80,6 +85,12 @@ router.delete('/:contactId', async (req, res, next) => {
 
 router.patch('/:contactId', async (req, res, next) => {
   try {
+       const { error } = contactSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({
+        "message": "missing required name field"
+      })
+    }
     const contact = await contactsOperations.updateContact(
       req.params.contactId,
       req.body
