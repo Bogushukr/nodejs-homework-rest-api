@@ -1,16 +1,8 @@
-const fs = require("fs/promises");
-
-const filePath = require("./filePath");
+const Contact = require('./shemas');
 
 const listContacts = async () => {
-    try {
-        const data = await fs.readFile(filePath);
-        const contacts = JSON.parse(data);
-        return contacts;
-    }
-    catch(error){
-        throw error;
-    }
+  const results = await Contact.find({});
+  return results;
 };
 
 module.exports = listContacts;

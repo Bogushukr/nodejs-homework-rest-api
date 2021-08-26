@@ -1,9 +1,9 @@
-const getAll = require("./getAll");
+const Contact = require('./shemas');
 
 const getContactById = async (contactId) => {
-  const contacts = await getAll()
-  const contact = contacts.find(({ id }) => id.toString() === contactId)
-  return contact
-}
+  const result = await Contact.findOne({ _id: contactId });
+
+  return result;
+};
 
 module.exports = getContactById;
