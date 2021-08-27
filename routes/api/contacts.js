@@ -9,6 +9,6 @@ router
   .post('/', contactsController.add)
   .delete('/:contactId', contactsController.remove)
   .patch('/:contactId', contactsController.update)
-   .patch('/:contactId', contactsController.updateStatusContact)
+  .patch('/:contactId/favorite', contactsController.updateStatusContact)
 
 module.exports = router
