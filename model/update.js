@@ -1,6 +1,6 @@
 const Contact = require('./shemas');
 
-const updateContact = async (contactId, body) => {
+const update = async (contactId, body) => {
   const result = await Contact.findByIdAndUpdate(
     { _id: contactId },
     { ...body },
@@ -9,4 +9,4 @@ const updateContact = async (contactId, body) => {
   return result;
 };
 
-module.exports = updateContact;
+module.exports = update;
