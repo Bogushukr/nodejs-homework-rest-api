@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-require("dotenv").config()
+require('dotenv-expand')(require('dotenv').config())
 const DB_HOST = process.env.DB_HOST;
 
 const db = mongoose.connect(DB_HOST, {
