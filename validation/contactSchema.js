@@ -22,4 +22,26 @@ const joiContactSchema = Joi.object({
     .boolean().optional(),
 })
 
-module.exports = joiContactSchema;
+const schemaUpdateStatusContact = Joi.object({
+  favorite: Joi.boolean().optional(),
+})
+
+const validate = async (schema, obj, next) => {
+  try {
+    await schema.validateAsync(obj)
+    return next()
+  } catch (error) {
+    next({
+      status: 400,
+      message: "missing field favorite",
+    })
+  }
+}
+
+module.exports.joiContactSchema = ({ body }, _, next) => {
+  return validate(joiContactSchema, body, next)
+}
+
+module.exports.schemaUpdateStatusContact = ({ body }, _, next) => {
+  return validate(schemaUpdateStatusContact, body, next)
+}

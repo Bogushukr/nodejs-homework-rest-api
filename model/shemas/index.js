@@ -7,18 +7,18 @@ const contactSchema = new Schema({
     name: {
       type: String,
       required: [true, 'Set name for contact'],
-      unique: false,
+      // unique: false,
     },
     email: {
       type: String,
       required: [true, 'This fill is required, please fill it'],
-      unique: true,
+      // unique: true,
     },
     phone: {
       type: String,
       match: [
        phoneRegexp, 'Please fill a valid phone number'],
-      unique: true,
+      // unique: true,
     },
     favorite: {
       type: Boolean,
