@@ -2,7 +2,7 @@ const { HttpCode, status } = require('../../helpers/constants')
 const { userService } = require('../../services')
 
 const reg  = async (req, res, next) => {
-   const {password, email, subscription} = req.body
+   const {password, email, subscription, avatarURL} = req.body
    const user = await userService.getByEmail(email)
    if (user) {
      return next({
@@ -15,7 +15,9 @@ const reg  = async (req, res, next) => {
      const newUser = await userService.addUser({
       password,
       email,
-      subscription,})
+      subscription,
+      avatarURL,
+     })
      return res
        .status(HttpCode.CREATED)
        .json({
