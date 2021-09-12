@@ -13,7 +13,11 @@ const current = async (req, res, next) => {
       .json({
         status: status.SUCCESS,
         code: HttpCode.OK,
-        data: user
+        data: {
+            email: user.email,
+            subscription: user.subscription,
+            avatarURL: user.avatarURL,
+          },
       });
   } catch (error) {
     next(error);

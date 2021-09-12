@@ -16,13 +16,16 @@ const reg  = async (req, res, next) => {
       password,
       email,
       subscription,})
-   return res.status(HttpCode.CREATED).json({
+     return res
+       .status(HttpCode.CREATED)
+       .json({
       status: status.SUCCESS,
       code: HttpCode.CREATED,
       data: {
         id: newUser.id,
         email: newUser.email,
         subscribition: newUser.subscribition,
+        avatarURL: newUser.avatarURL,
       }
    })
    } catch(err) {

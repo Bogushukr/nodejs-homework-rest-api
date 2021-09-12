@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken')
 
 require('dotenv').config()
 
-console.log('2====', UserRepository);
-
 const SECRET_KEY = process.env.JWT_KEY
 
 class AuthServices {
