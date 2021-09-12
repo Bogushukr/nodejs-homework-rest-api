@@ -32,7 +32,11 @@ class AuthServices {
    
   async current(email) {
     const data = await this.repository.getByEmail(email)
-    return { email: data.email, subscription: data.subscription };
+    return {
+      email: data.email,
+      subscription: data.subscription,
+      avatarURL: data.avatarURL
+    };
   }
 }
 
