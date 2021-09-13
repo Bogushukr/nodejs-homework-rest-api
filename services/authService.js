@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken')
 
 require('dotenv').config()
 
-console.log('2====', UserRepository);
-
 const SECRET_KEY = process.env.JWT_KEY
 
 class AuthServices {
@@ -34,7 +32,11 @@ class AuthServices {
    
   async current(email) {
     const data = await this.repository.getByEmail(email)
-    return { email: data.email, subscription: data.subscription };
+    return {
+      email: data.email,
+      subscription: data.subscription,
+      avatarURL: data.avatarURL
+    };
   }
 }
 
