@@ -2,10 +2,11 @@ const { UserRepository } = require('../repositories')
 const fs = require('fs/promises')
 const jimp = require('jimp')
 const path = require('path')
-require('dotenv').config()
 const { v4: uuidv4 } = require('uuid')
 const sgMail = require('@sendgrid/mail');
 const Mailgen = require('mailgen');
+
+require('dotenv').config()
 
 class UserServices {
   constructor() {

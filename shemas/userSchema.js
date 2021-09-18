@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
-const {subscription} = require('../helpers/constants')
+const { subscription } = require('../helpers/constants')
 const bcrypt = require('bcryptjs')
 const gravatar = require('gravatar')
 
