@@ -21,8 +21,11 @@ class AuthServices {
     await this.repository.updateToken(id, token)
     return {
       token,
-      user: { email: user.email, subscription: user.subscription },
-    };
+      user: {
+        email: user.email,
+        subscription: user.subscription
+      },
+    }
   }
 
   async logout(contactId) {
@@ -35,8 +38,9 @@ class AuthServices {
     return {
       email: data.email,
       subscription: data.subscription,
-      avatarURL: data.avatarURL
-    };
+      verify: data.verify,
+      verifyToken: data.verifyToken
+    }
   }
 }
 

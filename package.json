@@ -12,6 +12,7 @@
     "postsave": "git push"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.4.6",
     "bcryptjs": "^2.4.3",
     "cors": "2.8.5",
     "cross-env": "7.0.3",
@@ -23,6 +24,7 @@
     "jimp": "^0.16.1",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
+    "mailgen": "^2.0.15",
     "mongoose": "5.13.7",
     "mongoose-paginate-v2": "^1.4.2",
     "morgan": "1.10.0",
