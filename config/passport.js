@@ -6,7 +6,7 @@ const { userService } = require('../services')
 require('dotenv').config()
 const SECRET_KEY = process.env.JWT_KEY
 
-var params = {
+const params = {
     secretOrKey: SECRET_KEY,
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 }
@@ -26,4 +26,4 @@ passport.use(new Strategy(params, async (payload, done) => {
         done(error)
     }
     
-}));
+}))

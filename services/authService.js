@@ -12,17 +12,21 @@ class AuthServices {
 
   async login(email, password) {
     const user = await this.repository.getByEmail(email)  
-    if (!user || !user.validPassword(password)  ) {
+  if (!user || !user.validPassword(password) || !user.verify ) {
      return null
     }
+
     const id = user.id
     const payload = {id}
     const token = jwt.sign(payload, SECRET_KEY, {expiresIn: '1h'})
     await this.repository.updateToken(id, token)
     return {
       token,
-      user: { email: user.email, subscription: user.subscription },
-    };
+      user: {
+        email: user.email,
+        subscription: user.subscription
+      },
+    }
   }
 
   async logout(contactId) {
@@ -35,8 +39,9 @@ class AuthServices {
     return {
       email: data.email,
       subscription: data.subscription,
-      avatarURL: data.avatarURL
-    };
+      verify: data.verify,
+      verifyToken: data.verifyToken,
+    }
   }
 }
 

@@ -7,8 +7,9 @@ const upload = require('../../helpers/multer')
 
 
 router
-    .post(
-        '/signup', userController.reg)
+    .post('/signup', userController.reg)
+    .get('/verify/:verificationToken', userController.verification)
+    .post('/verify', userController.sendNewMail)
     .post('/login', userController.login)
     .post('/logout', guard, userController.logout)
     .get('/current', guard, userController.current)
